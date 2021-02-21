@@ -1,0 +1,38 @@
+<h1>The account holder name is : <%= @account.user.fullname %></h1>
+
+<div class="container-fluid row justify-content-md-center">
+
+    <h1>Bank accounts</h1>
+
+    <hr>
+
+    <%= link_to 'New transaction',  new_transaction_path, class:"btn btn-outline-primary"%>
+
+    <table class="table mt-3">
+        <thead class="thead-light">
+            <tr>
+            <th>Date</th>
+            <th>Transaction type</th>
+            <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @account.transactions.each do |account_transaction| %>
+                <tr>
+                    <td><%= account_transaction.created_at.to_date %></td>
+                    <td><%= account_transaction.transaction_type %></td>
+                    <td><%= number_to_currency(account_transaction.amount, unit: "₹", raise: true) %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+
+    <div class="card text-center col-6">
+        <div class="card-header">
+            Balance
+        </div>
+        <div class="card-body ">
+            <h5><%= number_to_currency(@account.balance, unit: "₹", raise: true) %></h5>
+        </div>
+    </div>
+</div>

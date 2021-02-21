@@ -1,0 +1,36 @@
+
+<%= render 'shared/error', object: @user %>
+
+
+<%= form_with(model: @user, local: true)  do |form| %>
+
+    <div class="form-group row">
+        <label class="col-sm-4 col-form-label col-form-label-lg" >
+            <%= form.label :first_name %>
+        </label>
+        <div class="col-sm-8 " >
+            <%= form.text_field :first_name, class:"form-control form-control-md mt-2", placeholder: "Enter the first_name" %>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-4 col-form-label col-form-label-lg" >
+            <%= form.label :middle_name %>
+        </label>
+        <div class="col-sm-8 " >
+            <%= form.text_field :middle_name, class:"form-control form-control-md mt-2", placeholder: "Enter the middle_name" %>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-4 col-form-label col-form-label-lg" >
+            <%= form.label :last_name %>
+        </label>
+        <div class="col-sm-8 " >
+            <%= form.text_field :last_name, class:"form-control form-control-md mt-2", placeholder: "Enter the last_name" %>
+        </div>
+    </div>
+
+    <div class="mt-5" id="center">
+        <%= form.submit(@user.new_record? ? "Sign up" : "Update account", class:"submit-btn btn btn-warning ") %>
+        <%= link_to "Go back", users_path , class:"btn btn-dark ", style: "float: right;" %>
+    </div>
+<% end %>

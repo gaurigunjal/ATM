@@ -1,0 +1,17 @@
+<div class="row justify-content-md-center " >
+
+    <div class="col-4 mt-3">
+        <%= image_tag("atm.png",size: "350x350", class:"ms-3") %>
+    </div>
+
+    <div class="col-8 mt-3">
+
+        <h2>Number of accounts : <%= number_of_accounts %> </h2>
+        <h2>Number of users : <%= number_of_users %> </h2>
+
+        <%= link_to 'Create new user', new_user_path, class:"btn btn-warning" %>
+
+    </div>
+</div>
+
+

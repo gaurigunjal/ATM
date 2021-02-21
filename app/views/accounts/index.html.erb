@@ -1,0 +1,26 @@
+
+<h1>Bank accounts</h1>
+<hr>
+<h3><%= link_to "Create new bank account", new_account_path, class:"btn btn-outline-primary"%></h3>
+
+
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th>Account number</th>
+        <th>User</th>
+        <th>Balance</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @accounts.each do |account| %>
+        <tr>
+          <th><%= account.account_number %></th>
+          <th><%= account.user.fullname %></th>
+          <td><%= number_to_currency(account.balance, raise: true) %></td>
+          <td><%= link_to 'show', account_path(account.id), class:"btn btn-outline-primary"%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>

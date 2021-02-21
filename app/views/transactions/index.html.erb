@@ -1,0 +1,27 @@
+<%= link_to 'New transaction',  new_transaction_path, class:"btn btn-outline-primary"%>
+
+<hr>
+
+<h4>All transactions :</h4>
+
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+        <th>Date</th>
+        <th>Account number</th>
+        <th>Transaction type</th>
+        <th>Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @transactions.each do |transaction| %>
+        <tr>
+            <td><%= transaction.created_at.to_date %></td>
+            <td><%= transaction.account.account_id %></td>
+            <td><%= transaction.transaction_type %></td>
+            <td><%= number_to_currency(transaction.amount, raise: true) %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+

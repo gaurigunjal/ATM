@@ -1,0 +1,51 @@
+
+<%= render 'shared/error', object: @transaction %>
+
+<div class="row justify-content-md-center">
+    <div class="col-8 mt-3">
+        <div class="card">
+            <div class="card-header text-center">
+                Create a new transaction
+            </div>
+            <div class="card-body ">
+                <%= form_with(model: @transaction, local: true)  do |form| %>
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label col-form-label-lg" >
+                            <%= form.label :transaction_type %>
+                        </label>
+                        <div class="col-sm-8 " >
+                            <%= form.select(:transaction_type, options_for_select(["select one","Deposit","Withdraw"]), {}, {class: "form-control"})%> 
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label col-form-label-lg" >
+                            <%= form.label :amount %>
+                        </label>
+                        <div class="col-sm-8" >
+                            <%= form.number_field :amount, class:"form-control form-control-md mt-2 mb-2", placeholder: "Enter the amount" %>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label col-form-label-lg" >
+                            <%= form.label :account_id %>
+                        </label>
+                        <div class="col-sm-8" >
+                            <%= form.select :account_id, Account.all.map{|u| [u.account_id, u.id]}, {}, class:"form-control form-control-md mt-2"  %>
+                        </div>
+                    </div>
+
+                    <div class="mt-5" id="center">
+                        <%= form.submit class:"submit-btn btn btn-warning " %>
+                    </div>
+
+                <% end %>            
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
